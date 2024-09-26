@@ -54,3 +54,9 @@ jobs:
     - name: Run tests
       run: |
         pytest tests/test_sample.py --html=report.html  # Виконати тести з конкретного файлу
+
+    - name: Upload HTML report
+      uses: actions/upload-artifact@v3
+      with:
+        name: test-report
+        path: report.html
