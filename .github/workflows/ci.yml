@@ -28,4 +28,4 @@ jobs:
 
     - name: Run tests
       run: |
-        pytest --html=report.html  # Виконати тести і згенерувати HTML-звіт
+        pytest pages/home_page_test_logic.py --html=report.html  # Виконати тести з конкретного файлу
