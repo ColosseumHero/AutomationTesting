@@ -1,7 +1,7 @@
 class ConfigSite:
     # URL головної сторінки
-    BASE_URL = "http://automationpractice.com/"
-    #BASE_URL = "https://en.wikipedia.org/wiki/Transfer"
+    #BASE_URL = "http://automationpractice.com/"
+    BASE_URL = "https://en.wikipedia.org/wiki/Transfer"
     # Дані для входу (якщо необхідно)
     USERNAME = "your_username"
     PASSWORD = "your_password"
