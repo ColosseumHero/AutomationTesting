@@ -31,8 +31,11 @@ jobs:
     - name: Install ChromeDriver
       run: |
         CHROME_VERSION=$(google-chrome --version | grep -oP '\d+\.\d+\.\d+' | head -1)  # Отримуємо версію Chrome
-        CHROME_DRIVER_VERSION=$(curl -sS https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROME_VERSION)  # Отримуємо відповідну версію ChromeDriver
-        wget https://chromedriver.storage.googleapis.com/$CHROME_DRIVER_VERSION/chromedriver_linux64.zip
+        CHROME_DRIVER_VERSION=$(curl -sS "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROME_VERSION")  # Отримуємо відповідну версію ChromeDriver
+        if [ -z "$CHROME_DRIVER_VERSION" ]; then  # Якщо версію не вдалося знайти
+          CHROME_DRIVER_VERSION=$(curl -sS https://chromedriver.storage.googleapis.com/LATEST_RELEASE)  # Використовуємо останню доступну версію
+        fi
+        wget "https://chromedriver.storage.googleapis.com/$CHROME_DRIVER_VERSION/chromedriver_linux64.zip"
         unzip chromedriver_linux64.zip
         chmod +x chromedriver
         sudo mv chromedriver /usr/local/bin/
