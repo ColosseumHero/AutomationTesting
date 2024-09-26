@@ -53,4 +53,4 @@ jobs:
 
     - name: Run tests
       run: |
-        pytest pages/home_page_test_logic.py --html=report.html  # Виконати тести з конкретного файлу
+        pytest tests/test_sample.py --html=report.html  # Виконати тести з конкретного файлу
