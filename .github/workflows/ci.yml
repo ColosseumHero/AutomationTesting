@@ -31,26 +31,17 @@ jobs:
           libappindicator3-1 \
           libindicator7
 
-    - name: Set up ChromeDriver
+    - name: Install Google Chrome
       run: |
-        CHROME_VERSION=$(google-chrome --version | grep -oP '\d+\.\d+\.\d+' | head -1)  # Отримуємо версію Chrome
-        MAJOR_VERSION=$(echo $CHROME_VERSION | cut -d'.' -f1)  # Отримуємо основну версію
-        CHROME_DRIVER_VERSION=$(curl -sS https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$MAJOR_VERSION)  # Остання відповідна версія ChromeDriver
-        wget -q "https://chromedriver.storage.googleapis.com/$CHROME_DRIVER_VERSION/chromedriver_linux64.zip"  # Завантажуємо ChromeDriver
-        unzip chromedriver_linux64.zip
-        sudo mv chromedriver /usr/local/bin/
-        sudo chmod +x /usr/local/bin/chromedriver
-
-    - name: Install Chrome and dependencies
-      run: |
+        wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+        echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list
         sudo apt-get update
-        sudo apt-get install -y wget unzip xvfb libxi6 libgconf-2-4
-        wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-        sudo apt install ./google-chrome-stable_current_amd64.deb
+        sudo apt-get install -y google-chrome-stable
 
     - name: Install ChromeDriver
       run: |
-        CHROME_DRIVER_VERSION=$(curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE)
+        CHROME_VERSION=$(google-chrome --version | grep -oP '\d+\.\d+\.\d+' | head -1)  # Отримуємо версію Chrome
+        CHROME_DRIVER_VERSION=$(curl -sS https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROME_VERSION)  # Отримуємо відповідну версію ChromeDriver
         wget https://chromedriver.storage.googleapis.com/$CHROME_DRIVER_VERSION/chromedriver_linux64.zip
         unzip chromedriver_linux64.zip
         chmod +x chromedriver
@@ -63,7 +54,7 @@ jobs:
 
     - name: Run tests
       run: |
-        pytest pages/home_page_test_logic.py --html=report.html 
+        pytest tests/test_sample.py --html=report.html 
 
     - name: Upload HTML report
       uses: actions/upload-artifact@v3
