@@ -21,6 +21,16 @@ jobs:
       with:
         python-version: '3.10'
 
+    - name: Install dependencies for Chrome
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y \
+          wget \
+          unzip \
+          libxss1 \
+          libappindicator3-1 \
+          libindicator7
+
     - name: Install Google Chrome
       run: |
         wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
@@ -30,13 +40,11 @@ jobs:
 
     - name: Install ChromeDriver
       run: |
-        CHROME_VERSION=$(google-chrome --version | grep -oP '\d+\.\d+\.\d+' | head -1)  # Отримуємо версію Chrome
-        MAJOR_VERSION=$(echo $CHROME_VERSION | cut -d'.' -f1)  # Отримуємо основну версію (мажорну)
-        CHROME_DRIVER_VERSION=$(curl -sS https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$MAJOR_VERSION)  # Отримуємо відповідну версію ChromeDriver
-        wget -q "https://chromedriver.storage.googleapis.com/$CHROME_DRIVER_VERSION/chromedriver_linux64.zip"  # Завантажуємо ChromeDriver
+        CHROME_DRIVER_VERSION=$(curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE)
+        wget https://chromedriver.storage.googleapis.com/$CHROME_DRIVER_VERSION/chromedriver_linux64.zip
         unzip chromedriver_linux64.zip
+        chmod +x chromedriver
         sudo mv chromedriver /usr/local/bin/
-        sudo chmod +x /usr/local/bin/chromedriver
 
     - name: Install dependencies
       run: |
