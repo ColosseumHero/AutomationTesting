@@ -51,6 +51,11 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
+    - name: Start Xvfb
+      run: |
+        export DISPLAY=:99
+        Xvfb :99 -screen 0 1920x1080x24 &
+
     - name: Run tests
       run: |
         pytest pages/home_page_test_logic.py --html=report.html  
