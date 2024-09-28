@@ -19,9 +19,9 @@ def test_navigate_to_sign_in(driver):
 def test_header_links(driver):
     home_page = HomePage(driver)
     home_page.open()  # Открыть главную страницу
-    print("Тест проверки ссылок в шапке сайта начался")
+    print("Тест перевірки посилань у меню навігації сайту розпочався")
     home_page.test_header_links()
-    print("Тест проверки ссылок в шапке сайта завершен")
+    print("Тест перевірки посилань у меню навігації сайту закінчився")
 
 def test_support_center_links(driver):
     home_page = HomePage(driver)

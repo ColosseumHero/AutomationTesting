@@ -45,12 +45,12 @@ class HomePage(BasePage):
         for locator in self.HEADER_LINKS:
             element = self.find_element(locator)
             if element:
-                print(f"Ссылка с текстом '{locator[1]}' найдена")
+                print(f"Посилання '{locator[1]}' знайдено")
                 element.click()
-                assert self.driver.current_url != self.base_url, f"Ссылка с текстом '{locator[1]}' не привела к переходу"
+                assert self.driver.current_url != self.base_url, f"Посилання '{locator[1]}' не призвело до переходу"
                 self.open()  # Вернуться на главную страницу для следующего теста
             else:
-                print(f"Ссылка с текстом '{locator[1]}' не найдена")
+                print(f"Посилання '{locator[1]}' не знайдено")
 
     def go_to_support_center(self):
         """Переход в раздел Support Center"""
@@ -65,11 +65,11 @@ class HomePage(BasePage):
 
         for locator in self.SUPPORT_LINKS:
             link = self.find_element(locator)
-            assert link is not None, f"Ссылка с текстом '{locator[1]}' не найдена"
+            assert link is not None, f"Посилання з текстом '{locator[1]}' не знайдено"
             link.click()
 
             # Убедиться, что мы на странице по новой ссылке
-            assert self.driver.current_url != current_url, f"Ссылка '{locator[1]}' не привела к переходу"
+            assert self.driver.current_url != current_url, f"Посилання з текстом '{locator[1]}' не призвело до переходу"
 
             # Вернуться на страницу Support Center
             self.driver.get(current_url)
@@ -90,16 +90,16 @@ class HomePage(BasePage):
 
             # Добавляем проверку наличия элемента и вывод сообщения
             if ConfigSite.SIZE_TEST_PHRASE_1 in self.driver.page_source:
-                print(f"Элемент '{ConfigSite.SIZE_TEST_PHRASE_1}' найден на размере экрана {width}x{height}")
+                print(f"Елемент '{ConfigSite.SIZE_TEST_PHRASE_1}' знайдений на розмірі екрану {width}x{height}")
             else:
                 raise AssertionError(
-                    f"Элемент '{ConfigSite.SIZE_TEST_PHRASE_1}' не найден на размере экрана {width}x{height}")
+                    f"Елемент '{ConfigSite.SIZE_TEST_PHRASE_1}' не знайдений на розмірі екрану {width}x{height}")
 
             # Можно добавить больше проверок или вывода информации о проверке, если нужно
             # Например:
             if ConfigSite.SIZE_TEST_PHRASE_2 in self.driver.page_source:
-                print(f"Элемент '{ConfigSite.SIZE_TEST_PHRASE_2}' найден на размере экрана {width}x{height}")
+                print(f"Елемент '{ConfigSite.SIZE_TEST_PHRASE_2}' знайдений на розмірі екрану {width}x{height}")
             else:
-                raise AssertionError(f"Элемент '{ConfigSite.SIZE_TEST_PHRASE_2}' не найден на размере экрана {width}x{height}")
+                raise AssertionError(f"Елемент '{ConfigSite.SIZE_TEST_PHRASE_2}' не знайдений на розмірі екрану {width}x{height}")
 
             # Аналогично для других элементов, если нужно добавить больше проверок
