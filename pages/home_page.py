@@ -4,37 +4,33 @@ from base_page import BasePage
 from cfg_sites import ConfigSite
 
 class HomePage(BasePage):
-    SEARCH_BOX = (By.ID, "search_query_top")
-    SEARCH_BUTTON = (By.NAME, "submit_search")
-    SIGN_IN_BUTTON = (By.CLASS_NAME, "login")
+    SEARCH_BOX =  (By.LINK_TEXT, 'Log in')
+    SEARCH_BUTTON = (By.LINK_TEXT, 'Create account')
+    SIGN_IN_BUTTON = (By.CLASS_NAME, "vector-header-container")
     CONTACT_US_BUTTON = (By.ID, "contact-link")
 
     HEADER_LINKS = [
-        (By.LINK_TEXT, 'Web Hosting'),
-        (By.LINK_TEXT, 'WordPress'),
-        (By.LINK_TEXT, 'VPS Hosting'),
-        (By.LINK_TEXT, 'Dedicated Servers'),
-        (By.LINK_TEXT, 'Domains'),
-        (By.LINK_TEXT, 'Why Us')
+        (By.LINK_TEXT, 'Talk'),
+        (By.LINK_TEXT, 'Edit'),
+        (By.LINK_TEXT, 'View history'),
     ]
 
     # Определение локаторов для раздела Support Center
-    SUPPORT_CENTER_LINK = (By.LINK_TEXT, 'Support Center')
+    SUPPORT_CENTER_LINK = (By.LINK_TEXT, 'Finance')
 
     # Определение локаторов для ссылок на странице Support Center
     SUPPORT_LINKS = [
-        (By.LINK_TEXT, 'Website Guide for New Customers'),
-        (By.LINK_TEXT, 'Website Transfers'),
-        (By.LINK_TEXT, 'cPanel Login'),
-        (By.LINK_TEXT, 'FTP Connection Settings'),
-        (By.LINK_TEXT, 'Where to Upload Files')
+        (By.LINK_TEXT, 'Transfer payment'),
+        (By.LINK_TEXT, 'Balance transfer'),
+        (By.LINK_TEXT, 'Money transfer (disambiguation)'),
+        (By.LINK_TEXT, 'Wire transfer'),
     ]
 
     def __init__(self, driver):
         super().__init__(driver)
 
     def search_for_item(self, item):
-        self.input_text(self.SEARCH_BOX, item)
+        self.click_element(self.SEARCH_BOX)
         self.click_element(self.SEARCH_BUTTON)
 
     def go_to_sign_in(self):
