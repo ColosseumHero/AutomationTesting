@@ -11,7 +11,6 @@ class ConfigSite:
     HEADER_LINKS = [
         (By.LINK_TEXT, "About"),
         (By.LINK_TEXT, 'Downloads'),
-        (By.LINK_TEXT, 'Documentation'),
         (By.LINK_TEXT, 'Community'),
         (By.LINK_TEXT, 'Success Stories'),
         (By.LINK_TEXT, 'News'),
