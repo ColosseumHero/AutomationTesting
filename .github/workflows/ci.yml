@@ -1,6 +1,5 @@
 name: Python Tests
 
-
 on:
   push:
     branches:
@@ -54,7 +53,7 @@ jobs:
 
     - name: Run tests
       run: |
-        pytest tests/test_sample.py --html=report.html  
+        pytest test/test_sample.py --html=report.html  
 
     - name: Upload HTML report
       uses: actions/upload-artifact@v3

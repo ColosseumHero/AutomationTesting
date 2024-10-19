@@ -9,14 +9,14 @@ class BasePage:
         self.base_url = ConfigSite.BASE_URL
 
     def open(self, url=None):
-        """Відкриває сторінку"""
+        """Відкривання сторінки"""
         if url:
             self.driver.get(url)
         else:
             self.driver.get(self.base_url)
 
     def find_element(self, locator, timeout=ConfigSite.TIMEOUT_FACTOR_MIN):
-        """Знаходить елемент на сторінці"""
+        """Знаходження елемента на сторінці"""
         try:
             element = WebDriverWait(self.driver, timeout).until(EC.presence_of_element_located(locator))
             print(f"Елемент {locator} знайдено")
@@ -26,7 +26,7 @@ class BasePage:
             return None
 
     def find_elements(self, locator, timeout=ConfigSite.TIMEOUT_FACTOR_MIN):
-        """Знаходить кілька елементів на сторінці"""
+        """Знаходження кілька елементів на сторінці"""
         try:
             elements = WebDriverWait(self.driver, timeout).until(EC.presence_of_all_elements_located(locator))
             print(f"Елементи {locator} знайдено")
@@ -36,13 +36,13 @@ class BasePage:
             return []
 
     def click_element(self, locator, timeout=ConfigSite.TIMEOUT_FACTOR_MAX):
-        """Натискає на елемент"""
+        """Натискання на елемент"""
         element = self.find_element(locator, timeout)
         if element:
             element.click()
 
     def input_text(self, locator, text, timeout=ConfigSite.TIMEOUT_FACTOR_MAX):
-        """Вводить текст у поле"""
+        """Введення тексту у поле"""
         element = self.find_element(locator, timeout)
         if element:
             element.clear()
