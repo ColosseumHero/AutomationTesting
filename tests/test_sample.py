@@ -25,7 +25,7 @@ def test_in_list_new():
 
 def test_in_list_another():
     # Перевірка, що число є в списку
-    time.sleep(36)
+    time.sleep(37)
     num_list = [1, 2, 3, 4, 5]
     assert 3 in num_list
 
