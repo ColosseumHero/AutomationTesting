@@ -3,7 +3,7 @@ import time
 
 def test_example():
     # Простий тест для перевірки, що 1 + 1 дорівнює 2
-    time.sleep(69)
+    time.sleep(59)
     assert 1 + 1 == 2
 
 def test_string():
