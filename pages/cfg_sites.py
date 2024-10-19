@@ -28,8 +28,8 @@ class ConfigSite:
     #SIZE_TEST_PHRASE_2 = "an international expedited bank-to-bank funds transfer"
     #SIZE_TEST_PHRASE_1 = "Website Guide for New Customers"
     #SIZE_TEST_PHRASE_2 = "Website Transfers"
-    SIZE_TEST_PHRASE_1 = "Python's documentation, tutorials, and guides are constantly evolving"
-    SIZE_TEST_PHRASE_2 = "Get started here, or scroll down for documentation"
+    SIZE_TEST_PHRASE_1 = "Python is powerful"
+    SIZE_TEST_PHRASE_2 = "plays well with others"
 
     # Тайм-аути
     TIMEOUT_FACTOR_MAX = 10

@@ -1,11 +1,13 @@
 from selenium.webdriver.common.by import By
 from base_page import BasePage
 from cfg_sites import ConfigSite
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 class HomePage(BasePage):
-    SEARCH_BOX =  (By.LINK_TEXT, 'Form Authentication')
-    SEARCH_BUTTON = (By.LINK_TEXT, 'Login')
-    SIGN_IN_BUTTON = (By.LINK_TEXT, "Inputs")
+    SEARCH_BOX =  (By.LINK_TEXT, 'Browse')
+    SEARCH_BUTTON = (By.LINK_TEXT, 'Donate')
+    SIGN_IN_BUTTON = (By.LINK_TEXT, "Events")
     CONTACT_US_BUTTON = (By.ID, "contact-link")
 
     # Використовуємо дані з конфігураційного класу
@@ -17,7 +19,6 @@ class HomePage(BasePage):
         super().__init__(driver)
 
     def search_for_item(self, item):
-        self.click_element(self.SEARCH_BOX)
         self.click_element(self.SEARCH_BUTTON)
 
     def go_to_sign_in(self):
