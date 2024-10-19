@@ -23,9 +23,9 @@ def test_support_center_links(driver):
     home_page = HomePage(driver)
     home_page.open()  # Відкриття додаткової сторінки сайту
 
-    print("Тест перевірки посилань у розділі Disappearing Elements розпочався")
+    print("Тест перевірки посилань у розділі About розпочався")
     home_page.check_support_links()
-    print("Тест перевірки посилань у розділі Disappearing Elements закінчився")
+    print("Тест перевірки посилань у розділі About закінчився")
     # Додаткові перевірки
 
 def test_responsiveness(driver):

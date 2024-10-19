@@ -10,7 +10,7 @@ class HomePage(BasePage):
 
     # Використовуємо дані з конфігураційного класу
     HEADER_LINKS = ConfigSite.HEADER_LINKS
-    SUPPORT_CENTER_LINK = (By.LINK_TEXT, 'Disappearing Elements')
+    SUPPORT_CENTER_LINK = (By.LINK_TEXT, 'About')
     SUPPORT_LINKS = ConfigSite.SUPPORT_LINKS
 
     def __init__(self, driver):
